@@ -1,0 +1,55 @@
+<section
+  class="relative bg-[url(https://images.unsplash.com/photo-1611764553921-437fb44f747a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80)] bg-cover bg-center bg-no-repeat h-screen w-screen"
+>
+
+  <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg px-4 py-10 sm:px-6 lg:px-8">
+    <div *ngIf="isLoginSelected === null" class="flex flex-col">
+        <h2 class="text-5xl font-bold mb-4">Welcome</h2>
+        <h2 class="text-xl mb-4">Book a room today by creating an account or logging in</h2>
+        <div class="flex flex-row  px-10 justify-evenly">
+            <button (click)="toggleForm(true)" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">Sign In</button>
+            <button (click)="toggleForm(false)" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">Sign Up</button>    
+        </div>
+    </div>
+
+    <div class="w-96">
+        <form *ngIf="isLoginSelected !== null && !isLoginSelected">
+            <h2 class="text-3xl font-bold mb-4">Sign Up</h2>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email</label>
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-gray-500" id="email" type="email" placeholder="Email">
+            </div>
+            <div class="mb-6">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password</label>
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-gray-500" id="password" type="password" placeholder="Password">
+            </div>
+            <div class="mb-6">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Confirm Password</label>
+              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-gray-500" id="password" type="password" placeholder="Password">
+            </div>
+            <div class="flex items-center justify-between">
+              <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">Sign Up</button>
+            </div>
+            <p (click)="toggleForm(true)" class="text-sm text-gray-700 mt-4">Have an account? <button class="text-gray-500 font-bold">Sign In</button></p>
+          </form>
+    
+          <form *ngIf="isLoginSelected !== null && isLoginSelected">
+              <h2 class="text-3xl font-bold mb-4">Login</h2>
+              <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email</label>
+                <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-gray-500" id="email" type="email" placeholder="Email">
+              </div>
+              <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password</label>
+                <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-gray-500" id="password" type="password" placeholder="Password">
+              </div>
+              <div class="flex items-center justify-between">
+                <button routerLink="/dashboard" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">Sign In</button>
+                <a class="inline-block align-baseline font-bold text-sm text-gray-500 hover:text-gray-800" href="#">Forgot Password?</a>
+              </div>
+              <p class="text-sm text-gray-700 mt-4 hover:click">Don't have an account? <button (click)="toggleForm(false)" class="text-gray-500 font-bold "> Sign Up </button> </p>
+          </form>    
+    </div>
+    
+  </div>
+</section>
