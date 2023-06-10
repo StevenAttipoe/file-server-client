@@ -1,0 +1,10 @@
+<section class="flex flex-row w-screen">
+    <div>
+        <app-sidebar (viewSelected)="onViewSelected($event)"></app-sidebar>
+    </div>
+    <div class="bg-slate-200 w-screen">
+        <ng-container *ngIf="selectedView">
+            <ng-container *ngComponentOutlet="selectedView.component"></ng-container>
+          </ng-container>
+    </div>    
+</section>

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './admin-dashboard/home/home.component';
-import { AuthComponent } from './auth/auth.component';
+import { AuthComponent } from './pages/auth/auth.component';
+import { IndexComponent } from './pages/index/index.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
+  {path: '', component: IndexComponent},
   {path: 'auth', component: AuthComponent},
 
 ];

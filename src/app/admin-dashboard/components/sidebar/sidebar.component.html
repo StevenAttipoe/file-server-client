@@ -1,0 +1,23 @@
+<div class="sticky top-0 inset-x-0 bg-white h-screen">
+    <div class="top-0 left-0 bottom-0 w-64 h-screen bg-white border-r border-gray-200 pt-7 pb-10 overflow-y-auto scrollbar-y lg:block lg:translate-x-0 lg:right-auto lg:bottom-0">
+        <div class="px-6">
+            <a class="flex-none text-xl font-semibold" href="#" aria-label="Brand">File Server</a>
+        </div>
+        <nav class="hs-accordion-group p-6 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
+        <ul class="space-y-1.5">
+            <li>
+                <a (click)="selectView(homeView)" class="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-slate-700 rounded-md hover:bg-gray-100" [ngClass]="{'bg-gray-100': homeView === selectedView}">
+                    <img src="assets/svg/home.svg" alt="Home" />
+                    Home
+                </a>
+                </li>
+            <li>
+                <a (click)="selectView(uploadView)" class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-md hover:bg-gray-100" [ngClass]="{'bg-gray-100': uploadView === selectedView}">
+                    <img src="assets/svg/upload.svg" alt="Home" />
+                    Upload
+                </a>
+            </li>
+        </ul>
+        </nav>
+    </div>
+</div>

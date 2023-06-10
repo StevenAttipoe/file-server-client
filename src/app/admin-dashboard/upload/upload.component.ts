@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'environment';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-upload',
@@ -10,11 +11,13 @@ import { environment } from 'environment';
 })
 export class UploadComponent {
   selectedFile: File | null = null;
+  uploadForm: FormGroup = new FormGroup({
+    title: new FormControl(''),
+    description: new FormControl('')
+  });
+  
 
-  constructor(private http: HttpClient) {
-
-  }
-
+  constructor(private http: HttpClient) {}
 
   onFileSelected(event: any): void {
     const files: FileList = event.target.files;
@@ -25,10 +28,12 @@ export class UploadComponent {
     }
   }
   
-  uploadFile(): void {
+  uploadFile(uploadFile: FormGroup): void {
     if (this.selectedFile) {
       const uploadData = new FormData();
       uploadData.append('file', this.selectedFile);
+      uploadData.append('title', uploadFile.value.title);
+      uploadData.append('description', uploadFile.value.description);
 
       this.http.post(environment.apiUrl + '/admin/upload', uploadData).subscribe(
         (response) => {

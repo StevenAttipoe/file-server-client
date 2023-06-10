@@ -1,2 +1,26 @@
-<input type="file" (change)="onFileSelected($event)" />
-<button (click)="uploadFile()">Upload</button>
+<div class="m-10 p-10 bg-white rounded-lg">
+    <p class="text-5xl font-bold pb-5">File Upload</p>
+    <div>
+        <form [formGroup]="uploadForm" (ngSubmit)="uploadFile(uploadForm)">
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Title</label>
+                <input 
+                    class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-gray-500" 
+                    formControlName = "title" 
+                    placeholder = "Title of file"
+                >
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Description</label>
+                <input 
+                    class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-gray-500" 
+                    formControlName = "description" 
+                    placeholder="Description of file">
+            </div>
+            <input type="file" (change)="onFileSelected($event)" />
+        </form>
+        <br>
+        <button type="submit" (click)="uploadFile(uploadForm)" class="bg-black hover:bg-gray-700 text-white font-bold py-2 px-4 rounded sm:mt-5">Upload</button>
+    </div>
+    
+</div>
