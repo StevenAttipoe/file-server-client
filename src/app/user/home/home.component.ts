@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'environment';
 import { FileMetaData } from '../interfaces/FileMetaData';
@@ -23,6 +23,28 @@ export class HomeComponent implements OnInit {
     this.fetchFiles();
   }
 
+  updateDownloadCount(fileName: string): void {
+    this.http.put(environment.apiUrl + `/files/update/download-count?fileName=${fileName}`, {}).subscribe(
+      (response) => {
+        console.log('Download count updated successfully.', response);
+      },
+      (error) => {
+        console.error('Failed to update download count.', error);
+      }
+    );
+  }
+
+  updateMailCount(fileName: string): void {
+    this.http.put(environment.apiUrl + `/files/update/email-count?fileName=${fileName}`, {}).subscribe(
+      (response) => {
+        console.log('Email count updated successfully.', response);
+      },
+      (error) => {
+        console.error('Failed to email download count.', error);
+      }
+    );
+  }
+
   fetchFiles(page: number = 1, pageSize: number = 11): void {
     this.http.get<FileMetaData[]>( environment.apiUrl + `/files/get/all?page=${page}&pageSize=${pageSize}`).subscribe(
       (response) => {
@@ -36,9 +58,6 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-  // toggleModel() {
-  //   this.isModalOpen = !this.isModalOpen;
-  // }
 
   toggleModal(index: number) {
     this.isModalOpen[index] = !this.isModalOpen[index];
@@ -49,7 +68,7 @@ export class HomeComponent implements OnInit {
   }
 
   fetchFile(fileName: string): void {
-    const apiUrl = `http://localhost:8080/api/v1/files/get?fileName=${fileName}`;
+    const apiUrl = environment.apiUrl + `/files/get?fileName=${fileName}`;
 
     this.http.get(apiUrl, { responseType: 'blob', observe: 'response' }).subscribe(
       (response: HttpResponse<Blob | null>) => {
@@ -62,23 +81,7 @@ export class HomeComponent implements OnInit {
         console.error('Failed to fetch file.', error);
       }
     );
-    
-    // this.http.get(apiUrl, { responseType: 'arraybuffer' }).subscribe(
-    //   (response) => {
-    //     const file = new Blob([response], { type: 'image/png' });
-    //     this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(file));
-    //   },
-    //   error => {
-    //     console.error('Failed to fetch file.', error);
-    //   }
-    // );
   }
-
-  // closeModal(event: MouseEvent) {
-  //   if (event.target === event.currentTarget) {
-  //     this.isModalOpen = false;
-  //   }
-  // }
   
   preventClose(event: MouseEvent) {
     event.stopPropagation();

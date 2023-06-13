@@ -4,25 +4,26 @@
   <table>
     <thead>
       <tr>
-        <th class="px-6 py-3">File Name</th>
+        <th class="px-6 py-3">File Title</th>
         <th class="px-6 py-3">Number of Downloads</th>
         <th class="px-6 py-3">Number of Emails</th>
       </tr>
     </thead>
 
     <tbody>
-      <tr>
-        <td class="px-6 py-3">
-          Image.png
-        </td>
-        <td class="px-6 py-3">
-          5
-        </td>
-        <td class="px-6 py-3">
-          10
-        </td>
-      </tr>
+      <ng-container *ngFor="let fileMetaData of fileMetaData">
+        <tr>
+          <td class="px-6 py-3">
+            {{fileMetaData.name}}
+          </td>
+          <td class="px-6 py-3">
+            {{fileMetaData.numberOfDownloads}}
+          </td>
+          <td class="px-6 py-3">
+            {{fileMetaData.numberOfSentEmails}}
+          </td>
+        </tr>
+      </ng-container>
     </tbody>
-    
   </table>
 </div>

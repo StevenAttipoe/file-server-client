@@ -50,7 +50,7 @@
                     <div class="bg-white p-6 rounded-md w-screen m-40 h-[35rem] pb-28" (click)="preventClose($event)">
                         <span  class="flex flex-row justify-between py-5">
                             <h2 class="text-xl font-semibold">{{fileName.name}}</h2>
-                            <a [href]="fileUrl" download="{{ fileName.name }}" class="bg-black text-white font-bold py-2 px-4 rounded">
+                            <a (click)="updateDownloadCount(fileName.title)" [href]="fileUrl" download="{{ fileName.name }}" class="bg-black text-white font-bold py-2 px-4 rounded">
                                 Download
                               </a>
                         </span>

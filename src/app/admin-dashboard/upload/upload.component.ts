@@ -35,7 +35,7 @@ export class UploadComponent {
       uploadData.append('title', uploadFile.value.title);
       uploadData.append('description', uploadFile.value.description);
 
-      this.http.post(environment.apiUrl + '/admin/upload', uploadData).subscribe(
+      this.http.post(environment.apiUrl + '/files/upload', uploadData).subscribe(
         (response) => {
           console.log('File uploaded successfully.', response);
         },
